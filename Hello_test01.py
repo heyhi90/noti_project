@@ -134,7 +134,7 @@ def ppomppu():
         post_Reply = []
 
         n = n + 1
-        print(n)
+        bot.sendMessage(1840767554, n)
 
         time.sleep(10)
 
