@@ -76,14 +76,14 @@ def ppomppu():
                         # if int(post_Down[j]) < 30:
                         post_oldNum = post_Num[j]
                         post_oldName = post_Name[j]
-                        text = '공유 새글 :' + post_Num[j] + ', 1작성자 :' + post_Name[j]
+                        text = '1-1)공유 새글 :' + post_Num[j] + ', 작성자 :' + post_Name[j] + ', 다운수 :' + post_Down[j] + ', ' + post_Date[j]
                         print(text)
                         bot.sendMessage(1840767554, text)
 
                     elif post_oldNum == post_Num[j]:
                         if post_Name[j] != post_oldName:
                             post_oldName = postName[j]
-                            text = '공유 새글 :' + post_Num[j] + ', 2작성자 :' + post_Name[j]
+                            text = '1-2) 공유 새글 :' + post_Num[j] + ', 작성자 :' + post_Name[j] + ', 다운수 :' + post_Down[j] + ', ' + post_Date[j]
                             print(text)
                             bot.sendMessage(1840767554, text)
                 else:
@@ -91,7 +91,7 @@ def ppomppu():
 
             if post_Cate[j] == '공유' and j > 0:
                 if int(post_Down[j]) < 30:
-                    text = '공유 뒤쪽 새글 :' + post_Num[j] + ', 2작성자 :' + post_Name[j]
+                    text = '2) 공유 새글 :' + post_Num[j] + ', 작성자 :' + post_Name[j] + ', 다운수 :' + post_Down[j] + ', ' + post_Date[j]
                     print('공유 새글(다른글)')
                     bot.sendMessage(1840767554, text)
 
@@ -99,7 +99,7 @@ def ppomppu():
             if post_Reply[j]:
                 if int(post_Down[j]) > 0 and int(post_Down[j]) < 30:
                     if post_Cate[j] == '요청' or post_Cate[j] == '정보' or post_Cate[j] == '공유':
-                        text = '분류 :' + post_Cate[j] + ' 새글 :' + post_Num[j] + ', 1작성자 :' + post_Name[j]
+                        text = '답글 알림_ 분류 :' + post_Cate[j] + ' 새글 :' + post_Num[j] + ', 작성자 :' + post_Name[j] + ', 다운수 :' + post_Down[j] + ', ' + post_Date[j]
                         bot.sendMessage(1840767554, text)
                         print('요청 정보 공유 답글')
                 else:
@@ -121,8 +121,8 @@ def ppomppu():
         post_Reply = []
 
         n = n + 1
-        text01 = '테스트'+n
-        if n%10 == 0:
+        text01 = ' 테스트 '+str(n)
+        if n%5 == 0:
             bot.sendMessage(1840767554, text01)
 
         time.sleep(10)
