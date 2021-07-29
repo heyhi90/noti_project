@@ -108,7 +108,7 @@ def ppomppu():
                     if post_oldReply != post_Num[j]:
                         post_oldReply = post_Num[j]
                         if post_Cate[j] == '요청' or post_Cate[j] == '정보' or post_Cate[j] == '공유':
-                            text = '답글_ 분류: ' + post_Cate[j] + ', 새글: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
+                            text = '3) 답글_' + post_Cate[j] + ': ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
                             bot.sendMessage(chat_id=-1001186655463, text=text)
                             print('요청 정보 공유 답글')
                 else:
