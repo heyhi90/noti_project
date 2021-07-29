@@ -121,7 +121,9 @@ def ppomppu():
         post_Reply = []
 
         n = n + 1
-        bot.sendMessage(1840767554, n)
+        text01 = '테스트'+n
+        if n%10 == 0:
+            bot.sendMessage(1840767554, text01)
 
         time.sleep(10)
 
