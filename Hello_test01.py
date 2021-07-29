@@ -83,7 +83,7 @@ def ppomppu():
 
                     elif post_oldNum == post_Num[j]:
                         if post_Name[j] != post_oldName:
-                            post_oldName = postName[j]
+                            post_oldName = post_Name[j]
                             text = '1-2) 공유: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
                             print(text)
                             bot.sendMessage(chat_id=-1001186655463, text=text)
