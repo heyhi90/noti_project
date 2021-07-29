@@ -95,9 +95,10 @@ def ppomppu():
                     print('')
                 else: #답글 아닌 공유글만 보여지기
                     if int(post_Down[j]) < 30 and int(post_Down[j]) > 0:
-                        text = '2) 공유 새글: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
-                        print('공유 새글(다른글)')
-                        bot.sendMessage(chat_id=-1001186655463, text=text)
+                        if post_oldName != post_Name[j] and j != 1 :
+                            text = '2) 공유 새글: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
+                            print('공유 새글(다른글)')
+                            bot.sendMessage(chat_id=-1001186655463, text=text)
 
         for j in range(len(post_Reply)):
             if post_Reply[j]:
