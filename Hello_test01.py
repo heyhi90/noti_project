@@ -31,19 +31,6 @@ def ppomppu():
     post_Reply = []
 
     while True:
-        """
-        global postNum
-        global postCate
-        global postName
-        global postAddress
-
-        global postReply
-
-        global postHit
-        global postDown
-        global postDate
-
-        global postAdnum"""
 
         # 웹 연결
         url = 'https://newtoki95.com/toki_bl'
@@ -90,22 +77,22 @@ def ppomppu():
                         post_oldNum = post_Num[j]
                         post_oldName = post_Name[j]
                         text = '공유 새글 :' + post_Num[j] + ', 1작성자 :' + post_Name[j]
-                        #print(text)
+                        print(text)
                         bot.sendMessage(1840767554, text)
 
                     elif post_oldNum == post_Num[j]:
                         if post_Name[j] != post_oldName:
                             post_oldName = postName[j]
                             text = '공유 새글 :' + post_Num[j] + ', 2작성자 :' + post_Name[j]
-                            #print(text)
+                            print(text)
                             bot.sendMessage(1840767554, text)
                 else:
-                    #print('공유없음')
+                    print('공유없음')
 
             if post_Cate[j] == '공유' and j > 0:
                 if int(post_Down[j]) < 30:
                     text = '공유 뒤쪽 새글 :' + post_Num[j] + ', 2작성자 :' + post_Name[j]
-                    #print('공유 새글(다른글)')
+                    print('공유 새글(다른글)')
                     bot.sendMessage(1840767554, text)
 
         for j in range(len(post_Reply)):
@@ -114,9 +101,9 @@ def ppomppu():
                     if post_Cate[j] == '요청' or post_Cate[j] == '정보' or post_Cate[j] == '공유':
                         text = '분류 :' + post_Cate[j] + ' 새글 :' + post_Num[j] + ', 1작성자 :' + post_Name[j]
                         bot.sendMessage(1840767554, text)
-                        #print('요청 정보 공유 답글')
+                        print('요청 정보 공유 답글')
                 else:
-                    #print('답글 있으나 다운로드가 높음, 다운로드가 없음')
+                    print('답글 있으나 다운로드가 높음, 다운로드가 없음')
             else:
                 print('답글 없음')
 
