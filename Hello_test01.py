@@ -51,9 +51,9 @@ def ppomppu():
 
             postReply = i.select_one(".list-item > div.wr-subject > a > .icon_reply")
 
-            postHit = i.select_one(".list-item > div.wr-hit").text
-            postDown = i.select_one(".list-item > div.wr-down").text
-            postDate = i.select_one(".list-item > div.wr-date").text
+            postHit = i.select_one(".list-item > div.wr-hit").text.lstrip()
+            postDown = i.select_one(".list-item > div.wr-down").text.lstrip()
+            postDate = i.select_one(".list-item > div.wr-date").text.lstrip()
 
             postAdnum = postAddress[-7:]
 
@@ -92,9 +92,11 @@ def ppomppu():
 
             if post_Cate[j] == '공유' and j > 0:
                 if int(post_Down[j]) < 30:
-                    text = '2) 공유 새글 :' + post_Num[j] + ', 작성자 :' + post_Name[j] + '\n다운수 :' + post_Down[j] + ', ' + post_Date[j]
-                    print('공유 새글(다른글)')
-                    bot.sendMessage(1840767554, text)
+                    if reply_oldNum != post_Num[j]:
+                        reply_oldNum = post_Num[j]
+                        text = '2) 공유 새글 :' + post_Num[j] + ', 작성자 :' + post_Name[j] + '\n다운수 :' + post_Down[j] + ', ' + post_Date[j]
+                        print('공유 새글(다른글)')
+                        bot.sendMessage(1840767554, text)
 
         for j in range(len(post_Reply)):
             if post_Reply[j]:
