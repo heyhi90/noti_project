@@ -128,7 +128,7 @@ def ppomppu():
 
         n = n + 1
         text01 = ' 테스트 '+str(n)
-        if n%100 == 0:
+        if n%10 == 0:
             testbot.sendMessage(1840767554, text01)
             #bot.sendMessage(chat_id=-1001186655463, text=text01)
         time.sleep(10)
