@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 def ppomppu():
     # 텔레그램 세팅
     bot = telegram.Bot(token='1936238104:AAGBNmzFpVWkxqRGGOPeIk1rMMpkIIB4TY4')
+    testbot = telegram.Bot(token='1902707442:AAHcK9oumcVMWUWJMAhk0JFj-aH-Gxp6e48')
 
     # 스위치 변수
     n = 0
@@ -73,12 +74,12 @@ def ppomppu():
             if j == 0:
                 if post_Cate[j] == '공유':
                     if post_oldNum != post_Num[j]:
-                        # if int(post_Down[j]) < 30:
-                        post_oldNum = post_Num[j]
-                        post_oldName = post_Name[j]
-                        text = '1-1)공유 새글 :' + post_Num[j] + ', 작성자 :' + post_Name[j] + ', 다운수 :' + post_Down[j] + ', ' + post_Date[j]
-                        print(text)
-                        bot.sendMessage(1840767554, text)
+                        if int(post_Down[j]) < 30:
+                            post_oldNum = post_Num[j]
+                            post_oldName = post_Name[j]
+                            text = '1-1)공유 새글 :' + post_Num[j] + ', 작성자 :' + post_Name[j] + ', 다운수 :' + post_Down[j] + ', ' + post_Date[j]
+                            print(text)
+                            bot.sendMessage(1840767554, text)
 
                     elif post_oldNum == post_Num[j]:
                         if post_Name[j] != post_oldName:
@@ -123,7 +124,7 @@ def ppomppu():
         n = n + 1
         text01 = ' 테스트 '+str(n)
         if n%5 == 0:
-            bot.sendMessage(1840767554, text01)
+            testbot.sendMessage(1840767554, text01)
 
         time.sleep(10)
 
