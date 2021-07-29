@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 def ppomppu():
     # 텔레그램 세팅
-    bot = telegram.Bot(token='1936238104:AAGBNmzFpVWkxqRGGOPeIk1rMMpkIIB4TY4')
+    bot = telegram.Bot(token='1737174063:AAFGy4F-UWy667u3ycOQaE2fTEg3FSKv6Ek')
     testbot = telegram.Bot(token='1902707442:AAHcK9oumcVMWUWJMAhk0JFj-aH-Gxp6e48')
 
     # 스위치 변수
@@ -79,14 +79,14 @@ def ppomppu():
                             post_oldName = post_Name[j]
                             text = '1-1) 공유: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
                             print(text)
-                            bot.sendMessage(1840767554, text)
+                            bot.sendMessage(chat_id=-1001186655463, text=text)
 
                     elif post_oldNum == post_Num[j]:
                         if post_Name[j] != post_oldName:
                             post_oldName = postName[j]
                             text = '1-2) 공유: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
                             print(text)
-                            bot.sendMessage(1840767554, text)
+                            bot.sendMessage(chat_id=-1001186655463, text=text)
                 else:
                     print('공유없음')
 
@@ -97,7 +97,7 @@ def ppomppu():
                     if int(post_Down[j]) < 30 and int(post_Down[j]) > 0:
                         text = '2) 공유 새글: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
                         print('공유 새글(다른글)')
-                        bot.sendMessage(1840767554, text)
+                        bot.sendMessage(chat_id=-1001186655463, text=text)
 
         for j in range(len(post_Reply)):
             if post_Reply[j]:
@@ -106,7 +106,7 @@ def ppomppu():
                         post_oldReply = post_Num[j]
                         if post_Cate[j] == '요청' or post_Cate[j] == '정보' or post_Cate[j] == '공유':
                             text = '답글_ 분류: ' + post_Cate[j] + ', 새글: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
-                            bot.sendMessage(1840767554, text)
+                            bot.sendMessage(chat_id=-1001186655463, text=text)
                             print('요청 정보 공유 답글')
                 else:
                     print('답글 있으나 다운로드가 높음, 다운로드가 없음')
@@ -128,9 +128,9 @@ def ppomppu():
 
         n = n + 1
         text01 = ' 테스트 '+str(n)
-        if n%10 == 0:
+        if n%100 == 0:
             testbot.sendMessage(1840767554, text01)
-
+            #bot.sendMessage(chat_id=-1001186655463, text=text01)
         time.sleep(10)
 
 if __name__ == '__main__':
