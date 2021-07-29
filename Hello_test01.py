@@ -1,10 +1,142 @@
 import telegram
-import os
+import time
+import requests
+from bs4 import BeautifulSoup
 
-bot = telegram.Bot(token='1936238104:AAGBNmzFpVWkxqRGGOPeIk1rMMpkIIB4TY4')
 
 def ppomppu():
-    bot.sendMessage(1840767554, '테스트')
+    # 텔레그램 세팅
+    bot = telegram.Bot(token='1936238104:AAGBNmzFpVWkxqRGGOPeIk1rMMpkIIB4TY4')
+
+    # 스위치 변수
+    n = 0
+    t = 0
+
+    # 오래된 게시글, 이름 끌어오기
+    post_oldNum = 0
+    post_oldName = 0
+    reply_oldNum = 0
+
+    # 게시글 정보 저장하는 변수
+    post_Num = []
+    post_Cate = []
+    post_Name = []
+    post_Address = []
+    post_Adnum = []
+
+    post_Hit = []
+    post_Down = []
+    post_Date = []
+
+    post_Reply = []
+
+    while True:
+        """
+        global postNum
+        global postCate
+        global postName
+        global postAddress
+
+        global postReply
+
+        global postHit
+        global postDown
+        global postDate
+
+        global postAdnum"""
+
+        # 웹 연결
+        url = 'https://newtoki95.com/toki_bl'
+        req = requests.get(url)
+        html = req.text
+        soup = BeautifulSoup(html, 'html.parser')
+
+        # 게시글 끌어오기
+        post = soup.select_one('ul#list-body')
+        post_list = post.select('.list-item')
+
+        for i in post_list:
+            postNum = i.select_one(".list-item > div.wr-num.hidden-xs").text
+            postCate = i.select_one(".list-item > div.wr-subject > a > span.tack-icon").text
+            postName = i.select_one(".list-item > div.wr-name.hidden-xs > a > span").text.lstrip()
+            postAddress = i.select_one(".list-item > div.wr-subject > a")['href']
+
+            postReply = i.select_one(".list-item > div.wr-subject > a > .icon_reply")
+
+            postHit = i.select_one(".list-item > div.wr-hit").text
+            postDown = i.select_one(".list-item > div.wr-down").text
+            postDate = i.select_one(".list-item > div.wr-date").text
+
+            postAdnum = postAddress[-7:]
+
+            if postNum != '*':
+                if postNum != '':
+                    post_Num.append(postNum)
+                    post_Cate.append(postCate)
+                    post_Name.append(postName)
+                    post_Address.append(postAddress)
+                    post_Adnum.append(postAdnum)
+                    post_Hit.append(postHit)
+                    post_Down.append(postDown)
+                    post_Date.append(postDate)
+                    post_Reply.append(postReply)
+
+        # 공유글 확인 함수
+        for j in range(len(post_Num)):
+            if j == 0:
+                if post_Cate[j] == '잡담':
+                    if post_oldNum != post_Num[j]:
+                        # if int(post_Down[j]) < 30:
+                        post_oldNum = post_Num[j]
+                        post_oldName = post_Name[j]
+                        text = '공유 새글 :' + post_Num[j] + ', 1작성자 :' + post_Name[j]
+                        #print(text)
+                        bot.sendMessage(1840767554, text)
+
+                    elif post_oldNum == post_Num[j]:
+                        if post_Name[j] != post_oldName:
+                            post_oldName = postName[j]
+                            text = '공유 새글 :' + post_Num[j] + ', 2작성자 :' + post_Name[j]
+                            #print(text)
+                            bot.sendMessage(1840767554, text)
+                else:
+                    #print('공유없음')
+
+            if post_Cate[j] == '공유' and j > 0:
+                if int(post_Down[j]) < 30:
+                    text = '공유 뒤쪽 새글 :' + post_Num[j] + ', 2작성자 :' + post_Name[j]
+                    #print('공유 새글(다른글)')
+                    bot.sendMessage(1840767554, text)
+
+        for j in range(len(post_Reply)):
+            if post_Reply[j]:
+                if int(post_Down[j]) > 0 and int(post_Down[j]) < 30:
+                    if post_Cate[j] == '요청' or post_Cate[j] == '정보' or post_Cate[j] == '공유':
+                        text = '분류 :' + post_Cate[j] + ' 새글 :' + post_Num[j] + ', 1작성자 :' + post_Name[j]
+                        bot.sendMessage(1840767554, text)
+                        #print('요청 정보 공유 답글')
+                else:
+                    #print('답글 있으나 다운로드가 높음, 다운로드가 없음')
+            else:
+                print('답글 없음')
+
+        # 게시글 정보 초기화 하는 변수
+        post_Num = []
+        post_Cate = []
+        post_Name = []
+        post_Address = []
+        post_Adnum = []
+
+        post_Hit = []
+        post_Down = []
+        post_Date = []
+
+        post_Reply = []
+
+        n = n + 1
+        print(n)
+
+        time.sleep(10)
 
 if __name__ == '__main__':
 
