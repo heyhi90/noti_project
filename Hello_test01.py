@@ -71,7 +71,7 @@ def ppomppu():
         # 공유글 확인 함수
         for j in range(len(post_Num)):
             if j == 0:
-                if post_Cate[j] == '잡담':
+                if post_Cate[j] == '공유':
                     if post_oldNum != post_Num[j]:
                         # if int(post_Down[j]) < 30:
                         post_oldNum = post_Num[j]
