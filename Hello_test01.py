@@ -74,7 +74,7 @@ def ppomppu():
             if j == 0:
                 if post_Cate[j] == '공유':
                     if post_oldNum != post_Num[j]:
-                        if int(post_Down[j]) < 30:
+                        if int(post_Down[j]) < 40:
                             post_oldNum = post_Num[j]
                             post_oldName = post_Name[j]
                             text = '1-1) 공유: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
@@ -101,7 +101,7 @@ def ppomppu():
 
         for j in range(len(post_Reply)):
             if post_Reply[j]:
-                if int(post_Down[j]) > 0 and int(post_Down[j]) < 30:
+                if int(post_Down[j]) > 0 and int(post_Down[j]) < 40:
                     if post_oldReply != post_Num[j]:
                         post_oldReply = post_Num[j]
                         if post_Cate[j] == '요청' or post_Cate[j] == '정보' or post_Cate[j] == '공유':
