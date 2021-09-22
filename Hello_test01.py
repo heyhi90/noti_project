@@ -17,6 +17,7 @@ def ppomppu():
     post_oldNum = 0
     post_oldName = 0
     post_oldReply = 0
+    post_oldName1 = 0
 
     # 게시글 정보 저장하는 변수
     post_Num = []
@@ -98,10 +99,11 @@ def ppomppu():
                         if post_oldName == post_Name[j] and j == 1 :
                             print('no')
                         else:
-                            post_oldName = post_Name[j]
-                            text = '2) 공유 새글: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
-                            print('공유 새글(다른글)')
-                            bot.sendMessage(chat_id=-1001186655463, text=text)
+                            if post_oldName1 != post_Num[j]:
+                                post_oldName1 = post_Num[j]
+                                text = '2) 공유 새글: ' + post_Num[j] + ', 작성자: ' + post_Name[j] + '\n다운수: ' + post_Down[j] + ', ' + post_Date[j]
+                                print('공유 새글(다른글)')
+                                bot.sendMessage(chat_id=-1001186655463, text=text)
 
         for j in range(len(post_Reply)):
             if post_Reply[j]:
